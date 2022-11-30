@@ -1,0 +1,64 @@
+﻿@helper GetHtml(List<ASP.NET_MVC_NESTED_YAPI.Notes> noteList, int noteID) { 
+
+<table class="table table-bordered">
+    @{ 
+        int currentID = 0;
+        int rowIndex = 0;
+        foreach (var i in noteList.Where(a=>a.Equals(noteID)))
+        {
+            if (i.NoteID==currentID)
+            {
+                continue;
+            }
+            else
+            {
+                if (rowIndex==0)
+                {
+                    <thead>
+                            <tr>
+                                <th>NOTES</th>                               
+                            </tr>
+                    </thead>
+                }
+                rowIndex++;
+                currentID = i.NoteID;
+                var Sub = noteList.Where(a => a.Equals(i.NoteID)).ToList();
+                var newNoteList = noteList.Where(a => !a.NoteID.Equals(i.NoteID)).ToList();
+                <tbody>
+                    <tr>
+                        <td>
+                            @if (Sub.Count > 0)
+                            {
+                                <span class="icon icon-e" style="float:left; cursor:pointer;"></span>
+                            }
+                            else
+                            {
+                                <span style="display:inline-block;width:14px;">&nbsp;</span>
+                            }
+                            @i.NoteID
+                        </td>
+                        <td>@i.Notes1</td>
+                    </tr>
+                    <tr style="display:none;">
+
+                        @if (Sub.Count > 0)
+                        {
+                            <td colspan="4" class="innerTable">
+                                @IcIceVeri.GetHtml(newNoteList,i.NoteID)
+                            </td>
+                        }
+                        else
+                        {
+                            <td colspan="4">
+
+                            </td>
+                        }
+
+                    </tr>
+                </tbody>
+            }
+        }
+    }
+</table>
+    
+    }

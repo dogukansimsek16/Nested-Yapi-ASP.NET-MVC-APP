@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="VeriTabanimModelStoreContainer" CdmEntityContainer="VeriTabanimEntities">
+    <EntitySetMapping Name="Notes">
+      <EntityTypeMapping TypeName="VeriTabanimModel.Notes">
+        <MappingFragment StoreEntitySet="Notes">
+          <ScalarProperty Name="NoteID" ColumnName="NoteID" />
+          <ScalarProperty Name="Notes1" ColumnName="Notes" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
